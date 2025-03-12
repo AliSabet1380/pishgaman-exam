@@ -9,6 +9,7 @@ import { persistor, store } from "@/store/store";
 
 import { Home } from "@pages/home";
 import { Login } from "@pages/login";
+import ErrorBoundary from "@pages/error";
 import { PrivateRoutes, PublicRoutes } from "@pages/auth";
 
 import "@/App.css";
@@ -20,17 +21,19 @@ const App = () => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <QueryProvider>
-          <BrowserRouter>
-            <Toaster />
-            <Routes>
-              <Route element={<PrivateRoutes />}>
-                <Route path="/home" element={<Home />} />
-              </Route>
-              <Route element={<PublicRoutes />}>
-                <Route path="/" element={<Login />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
+          <ErrorBoundary>
+            <BrowserRouter>
+              <Toaster />
+              <Routes>
+                <Route element={<PrivateRoutes />}>
+                  <Route path="/home" element={<Home />} />
+                </Route>
+                <Route element={<PublicRoutes />}>
+                  <Route path="/" element={<Login />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </ErrorBoundary>
         </QueryProvider>
       </PersistGate>
     </Provider>

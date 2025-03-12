@@ -10,6 +10,7 @@ import { clearToken } from "@/store/token-slice";
 import { VehicleResult } from "@/components/vehicle-result";
 import { useSubmitRequest } from "@/hooks/use-submit-request";
 import { clearVehicles } from "@/store/vehicle-slice";
+import { toast } from "sonner";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -30,8 +31,8 @@ export const Home = () => {
     dispatch(clearCoords());
   };
   const onSubmitRequest = () => {
-    if (!selectedVehicle) return;
-    if (position.length !== 2) return;
+    if (!selectedVehicle) return toast.error("لطفا ماشین انتخاب کنید");
+    if (position.length !== 2) return toast.error("لطفا دو موقعیت انتخاب کنید");
 
     mutate({
       destination: position[1].coords,

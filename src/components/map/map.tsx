@@ -21,6 +21,8 @@ export const Map = () => {
       >
         <DetectClick />
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        {/* <TileLayer url="https://map.pishgamanasia.ir/tile/{z}/{x}/{y}.png" /> */}
+
         {position.map(({ coords, name }, i) => (
           <Marker
             key={i}
