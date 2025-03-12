@@ -9,7 +9,8 @@ import { persistor, store } from "@/store/store";
 
 import { Home } from "@pages/home";
 import { Login } from "@pages/login";
-import ErrorBoundary from "@pages/error";
+import { NotFound } from "@pages/not-found";
+import { ErrorBoundary } from "@pages/error";
 import { PrivateRoutes, PublicRoutes } from "@pages/auth";
 
 import "@/App.css";
@@ -31,6 +32,7 @@ const App = () => {
                 <Route element={<PublicRoutes />}>
                   <Route path="/" element={<Login />} />
                 </Route>
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
           </ErrorBoundary>

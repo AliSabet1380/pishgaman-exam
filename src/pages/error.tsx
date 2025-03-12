@@ -1,6 +1,6 @@
 import { Component, ReactNode } from "react";
 
-class ErrorBoundary extends Component<
+export class ErrorBoundary extends Component<
   { children: ReactNode },
   { hasError: boolean }
 > {
@@ -20,5 +20,3 @@ class ErrorBoundary extends Component<
     return this.props.children;
   }
 }
-
-export default ErrorBoundary;
